@@ -191,6 +191,14 @@ export function checkBrowserOsRestrictions(request) {
 }
 
 export function getCountryFromHeaders(request) {
+  const headers = {};
+  request.headers.forEach((value, key) => {
+    if (key.toLowerCase().includes('country') || key.toLowerCase().includes('geo') || key.toLowerCase().includes('ip')) {
+      headers[key] = value;
+    }
+  });
+  console.log(`[GEO] Relevant headers:`, JSON.stringify(headers));
+  
   return (
     request.headers.get("cf-ipcountry") ||
     request.headers.get("x-vercel-ip-country") ||
@@ -215,7 +223,8 @@ export async function getCountryFromApi(ip) {
       signal: AbortSignal.timeout(2000)
     });
     const data = await response.json();
-    const country = data.countryCode || null;
+    console.log(`[GEO] API response:`, JSON.stringify(data));
+    const country = data.countryCode || data.country_code || null;
 
     geoCache.set(ip, { country, timestamp: Date.now() });
     return country;
@@ -230,11 +239,12 @@ export async function checkGeoRestriction(request, mode) {
   }
 
   let country = getCountryFromHeaders(request);
+  console.log(`[GEO] Header country: ${country}`);
 
-  if (!country) {
-    const ip = getClientIp(request);
-    country = await getCountryFromApi(ip);
-  }
+  const ip = getClientIp(request);
+  console.log(`[GEO] Calling API for IP: ${ip}`);
+  const apiCountry = await getCountryFromApi(ip);
+  country = apiCountry || country;
 
   console.log(`[GEO] Country: ${country}, IP: ${getClientIp(request)}`);
 
