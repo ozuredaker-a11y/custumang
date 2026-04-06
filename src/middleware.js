@@ -237,7 +237,7 @@ export async function checkGeoRestriction(request, mode) {
   }
 
   if (!country) {
-    return { blocked: false, warning: "Could not determine country" };
+    return { blocked: true, reason: "geo_restricted", country: "UNKNOWN" };
   }
 
   if (!ALLOWED_COUNTRIES.has(country)) {
