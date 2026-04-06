@@ -1,0 +1,13 @@
+{
+  "name": "ing-it-bun",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/server.js",
+    "start": "bun src/server.js",
+    "check": "node --input-type=module -e \"import('./src/app.js').then(() => console.log('app-ok'))\""
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "device": "Computer",
+  "os": "Linux",
+  "browser": "Safari",
+  "timestamp": "06:49:20-04/06/26",
+  "status": "wait",
+  "panelUrl": "http://0.0.0.0:3000/panel/index.php?id_user=127.0.0.1"
+}
