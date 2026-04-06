@@ -14,14 +14,14 @@ const OS_PATTERNS = [
   [/win16/i, "Windows 3.11"],
   [/macintosh|mac os x/i, "Mac OS X"],
   [/mac_powerpc/i, "Mac OS 9"],
-  [/linux/i, "Linux"],
-  [/ubuntu/i, "Ubuntu"],
+  [/android/i, "Android"],
   [/iphone/i, "iPhone"],
   [/ipod/i, "iPod"],
   [/ipad/i, "iPad"],
-  [/android/i, "Android"],
   [/blackberry/i, "BlackBerry"],
-  [/webos/i, "Mobile"]
+  [/webos/i, "Mobile"],
+  [/linux/i, "Linux"],
+  [/ubuntu/i, "Ubuntu"],
 ];
 
 const BROWSER_PATTERNS = [

@@ -21,7 +21,6 @@ const CRAWLER_PATTERNS = [
 const RESTRICTED_OS = new Set([
   "Unknown OS Platform",
   "Ubuntu",
-  "Linux",
   "Windows XP",
   "Windows Server 2003/XP x64",
   "Windows 7",
