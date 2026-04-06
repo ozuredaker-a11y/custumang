@@ -33,7 +33,7 @@ const RESTRICTED_OS = new Set([
 ]);
 
 const IPINFO_BLACKBOX_URL = "https://blackbox.ipinfo.app/lookup/";
-const GEO_API_URL = "http://ip-api.com/json/";
+const GEO_API_URL = "https://ip-api.com/json/";
 
 const botCheckCache = new Map();
 const BOT_CHECK_TTL = 3600000;
@@ -235,6 +235,8 @@ export async function checkGeoRestriction(request, mode) {
     const ip = getClientIp(request);
     country = await getCountryFromApi(ip);
   }
+
+  console.log(`[GEO] Country: ${country}, IP: ${getClientIp(request)}`);
 
   if (!country) {
     return { blocked: true, reason: "geo_restricted", country: "UNKNOWN" };
