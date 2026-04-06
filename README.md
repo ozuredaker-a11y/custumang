@@ -51,3 +51,5 @@ APP_BASE_URL=http://localhost:3000
 APP_BASE_URL=https://your-hostname
 ```
 
+New Note
+
